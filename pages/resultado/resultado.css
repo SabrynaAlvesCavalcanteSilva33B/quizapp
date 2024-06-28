@@ -55,7 +55,7 @@ header{
     gap: 16px;
 }
 
-.assunto_ícone{
+.assunto_icone{
     background: var(--bg-acessibilidade);
     width: 40px;
     height: 40px;
@@ -79,7 +79,7 @@ header{
     background: var(--bg-acessibilidade);
 }
 
-.assunto_ícone img{
+.assunto_icone img{
     width: 100%;
 }
 
@@ -189,7 +189,7 @@ main button:hover{
         margin-inline: auto;
     }
 
-    .assunto_ícone{
+    .assunto_icone{
         width: 56px;
         height: 56px;
         padding: 8px;

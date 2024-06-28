@@ -50,7 +50,7 @@ function montarPergunta(){
             <div>
                 <p>Questão ${pergunta} de 10</p>
 
-                <h2>${alterarSinais(quiz.questions[pergunta-1].questions)}</h2>
+                <h2>${alterarSinais(quiz.questions[pergunta-1].question)}</h2>
             </div>
 
             <div class="barra_progresso">
@@ -99,7 +99,7 @@ function montarPergunta(){
                 </label>
             </form>
 
-            <button>Responder</button>
+            <button>Responde</button>
         </section>
     `
 }
@@ -110,7 +110,7 @@ function alterarSinais(texto){
 }
 
 function guardarResposta(evento){
-    resposta = evento.target.volue
+    resposta = evento.target.value
     idInputResposta = evento.target.id
 
     const botaoEnviar = document.querySelector(".alternativas button")
@@ -119,14 +119,16 @@ function guardarResposta(evento){
 
 function validarResposta(){
     const botaoEnviar = document.querySelector(".alternativas button")
-    botaoEnviar.innerText = "Proxíma"
-    botaoEnviar.removeEventListener ("click", "validarResposta")
+    botaoEnviar.innerText = "Proxima"
+
+    
+    botaoEnviar.removeEventListener ("click", validarResposta)
 
     if (pergunta === 10) {
         botaoEnviar.innerText = "Finalizar"
-        botaoEnviar.addEventListener ("click", "finalizar")
+        botaoEnviar.addEventListener ("click", finalizar)
     }else{
-        otaoEnviar.addEventListener("click", "proximaPergunta")
+        botaoEnviar.addEventListener("click", proximaPergunta)
     }
      
     if ( resposta === quiz.questions[pergunta-1].answer){
@@ -146,7 +148,7 @@ function finalizar() {
     window.location.href = "../resultado/resultado.html"
 }
 
-function proxímaPergunta(){
+function proximaPergunta(){
     montarPergunta()
     adicionarEventoInputs()
 }
@@ -156,7 +158,7 @@ function adicionarEventoInputs(){
     inputsResposta.forEach(input => {
         input.addEventListener("click",guardarResposta )
 
-        if(input.volue ===quiz.questions[pergunta -1].answer){
+        if(input.value ===quiz.questions[pergunta -1].answer){
             respostaCorretaId =input.id
 
         }
